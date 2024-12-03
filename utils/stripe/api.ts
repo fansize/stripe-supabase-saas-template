@@ -10,6 +10,8 @@ export async function getStripePlan(email: string) {
     const subscription = await stripe.subscriptions.retrieve(
         user[0].plan
     );
+
+    console.log(subscription)
     const productId = subscription.items.data[0].plan.product as string
     const product = await stripe.products.retrieve(productId)
     return product.name

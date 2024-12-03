@@ -33,6 +33,8 @@ export default async function DashboardLayout({
         return redirect('/subscribe')
     }
 
+    console.log(user?.email)
+
 
     return (
         <html lang="en">
