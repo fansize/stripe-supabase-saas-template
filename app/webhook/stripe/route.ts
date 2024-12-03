@@ -11,7 +11,24 @@ export async function POST(request: Request) {
         // 解析 webhook 请求体
         const response = await request.json()
 
-        // 只处理订阅相关的事件
+        // 处理客户信息更新事件
+        if (response.type === 'customer.updated') {
+            await db.update(usersTable)
+                .set({
+                    name: response.data.object.name,
+                    email: response.data.object.email
+                })
+                .where(eq(usersTable.stripe_id, response.data.object.id));
+
+            console.log('客户信息更新完成:', {
+                event_type: response.type,
+                stripe_id: response.data.object.id,
+                name: response.data.object.name,
+                email: response.data.object.email
+            });
+        }
+
+        // 处理订阅相关事件
         if (response.type.startsWith('customer.subscription')) {
             // 根据不同的订阅事件类型进行处理
             switch (response.type) {

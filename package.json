@@ -8,7 +8,7 @@
     "start": "next start",
     "lint": "next lint",
     "stripe:login": "stripe login",
-    "stripe:listen": "stripe listen --forward-to=localhost:3000/api/webhook/stripe",
+    "stripe:listen": "stripe listen --forward-to=localhost:3000/webhook/stripe",
     "db:generate": "drizzle-kit generate",
     "db:migrate": "drizzle-kit migrate",
     "db:push": "drizzle-kit push",
