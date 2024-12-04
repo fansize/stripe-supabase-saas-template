@@ -38,8 +38,10 @@ export default async function DashboardLayout({
 
     return (
         <html lang="en">
-            <DashboardHeader />
-            {children}
+            <body>
+                <DashboardHeader />
+                {children}
+            </body>
         </html>
     );
 }
